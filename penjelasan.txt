@@ -1,0 +1,129 @@
+--PENJELASAN GENERAL--
+
+1. Interpretasi Metrik
+Metrik-metrik yang ditampilkan memiliki fungsi sebagai berikut:
+1. MSE (Mean Squared Error):
+Mengukur rata-rata kuadrat selisih antara nilai prediksi dan nilai sebenarnya
+Nilai MSE Gaussian (0.000002) sedikit lebih baik dibanding Uniform (0.000003)
+Semakin kecil nilai MSE, semakin baik model fitting
+RMSE (Root Mean Square Error):
+Akar kuadrat dari MSE, memberikan ukuran error dalam satuan yang sama dengan data asli
+Gaussian: 0.001554, Uniform: 0.001602
+Lebih mudah diinterpretasi karena satuannya sama dengan variabel asli
+MAE (Mean Absolute Error):
+Rata-rata nilai absolut dari error
+Kedua distribusi memiliki nilai yang hampir sama (Gaussian: 0.001292, Uniform: 0.001289)
+Menunjukkan rata-rata besarnya deviasi prediksi dari nilai sebenarnya
+4. R² (R-squared):
+Mengukur seberapa baik model menjelaskan variasi data
+Kedua model memiliki nilai sangat tinggi (>0.9999)
+Menunjukkan kedua model sangat baik dalam fitting data
+2. Analisis Hasil Simulasi
+Dinamika Biomassa Hutan (Forest Biomass):
+Menunjukkan penurunan tajam di awal simulasi
+Stabil pada nilai sekitar 0.2 setelah t=40
+Kedua distribusi menunjukkan pola yang sangat mirip
+Populasi Satwa Liar (Wildlife):
+Puncak populasi di awal kemudian menurun
+Stabil pada nilai sekitar 0.1 setelah t=20
+Distribusi Uniform menunjukkan fluktuasi yang sedikit lebih besar
+Populasi Manusia (Human Population):
+Pertumbuhan signifikan hingga t=20
+Mencapai steady state pada nilai sekitar 1.0
+Kedua distribusi menghasilkan prediksi yang sangat mirip
+4. Tekanan Populasi dan Aktivitas Manusia:
+Keduanya menunjukkan tren peningkatan hingga mencapai steady state
+Distribusi Uniform menghasilkan nilai steady state yang sedikit lebih rendah
+3. Analisis Distribusi Parameter
+Karakteristik Distribusi:
+Gaussian: Parameter terkonsentrasi di sekitar nilai mean
+Uniform: Parameter tersebar merata dalam rentang yang ditentukan
+Beberapa parameter (seperti rBW dan rho) menunjukkan perbedaan distribusi yang jelas
+Korelasi Parameter:
+Matriks korelasi menunjukkan interaksi antar parameter
+Sebagian besar parameter memiliki korelasi rendah (warna biru muda)
+Beberapa parameter menunjukkan korelasi moderat (warna lebih gelap)
+4. Kesimpulan
+Perbandingan Performa:
+Kedua distribusi menghasilkan fitting yang sangat baik (R² > 0.9999)
+Distribusi Gaussian sedikit lebih baik dalam hal MSE dan RMSE
+Perbedaan performa sangat kecil, menunjukkan kedua metode sama-sama efektif
+
+-- PENJELASAN PER BIDANG (UNTUK VISUALISASI)--
+A. Akurasi Model:
+Distribusi Gaussian menunjukkan performa yang lebih baik dengan nilai MSE (0.000002) dan RMSE (0.001554) yang lebih rendah dibandingkan distribusi Seragam (MSE: 0.000003, RMSE: 0.001602)
+Hal ini mengindikasikan bahwa penggunaan distribusi Gaussian lebih tepat untuk memodelkan dinamika sistem konservasi hutan dan satwa liar
+
+B. Dinamika Sistem:
+Kedua distribusi menunjukkan pola yang konsisten dalam memprediksi:
+Penurunan biomassa hutan yang kemudian stabil
+Fluktuasi populasi satwa yang mencapai keseimbangan
+Pertumbuhan populasi manusia dan aktivitasnya
+Distribusi Gaussian menghasilkan prediksi yang lebih halus dan stabil, yang lebih sesuai dengan dinamika alami sistem ekologi
+
+C. Stabilitas Parameter:
+Distribusi Gaussian memberikan kontrol yang lebih baik pada nilai parameter ekologis, yang penting dalam konteks konservasi dimana perubahan drastis jarang terjadi secara alami
+Hal ini tercermin dari histogram parameter yang menunjukkan konsentrasi nilai di sekitar mean, sesuai dengan karakteristik sistem ekologi yang cenderung memiliki nilai optimal
+Dengan demikian, untuk pemodelan konservasi biomassa hutan dan populasi satwa liar, distribusi Gaussian terbukti lebih sesuai karena memberikan representasi yang lebih akurat terhadap dinamika sistem ekologi dan menghasilkan prediksi yang lebih stabil.
+
+D. Skala dan Normalisasi:
+Pada hasil Anda: Data dinormalisasi dalam rentang 0-1 (skala relatif)
+Pada referensi: Data menggunakan nilai absolut (skala sebenarnya)
+Contoh:
+- Forest Biomass: referensi mencapai ~25, hasil Anda ~1.0
+- Human Population: referensi mencapai ~120, hasil Anda ~1.0
+- Human Activities: referensi mencapai ~80, hasil Anda ~1.0
+
+Penyebab Perbedaan:
+- Normalisasi: Anda menggunakan normalisasi parameter dan variabel state (kondisi awal X0 = [1.0, 0.5, 0.3, 0.2, 0.1, 0.1, 0.1])
+- Paper referensi menggunakan nilai absolut tanpa normalisasi
+- Ini memengaruhi interpretasi hasil tapi tidak mengubah dinamika sistem secara fundamental
+
+Solusi yang Disarankan:
+Untuk membuat hasil lebih sesuai dengan referensi, Anda perlu:
+Menggunakan kondisi awal yang sesuai dengan paper (tidak dinormalisasi)
+Menyesuaikan range parameter dengan skala asli
+Menghilangkan normalisasi pada output
+
+Dampak pada Interpretasi:
+Meskipun skala berbeda, pola dinamika sistem tetap sama:
+Penurunan awal biomassa hutan diikuti stabilisasi
+Pertumbuhan populasi manusia yang sigmoid
+Peningkatan aktivitas manusia dan upaya teknologi
+Perbedaan ini tidak mempengaruhi validitas analisis perbandingan distribusi Gaussian dan Seragam, karena yang penting adalah pola relatif dan hubungan antar variabel, bukan nilai absolutnya.
+
+-- PENJELASAN PER BIDANG (UNTUK DIAGRAM EROR)--
+A. Analisis Error Fitting
+1. Karakteristik Umum:
+Kedua distribusi menunjukkan pola error yang mirip
+Error maksimum terjadi di awal simulasi (t < 20)
+Nilai error berkisar antara 0 hingga 0.005 (0.5%)
+
+2. Perbandingan Error Distribusi Gaussian vs Uniform:
+a. Awal Simulasi (t = 0-20):
+Kedua distribusi menunjukkan fluktuasi error yang tinggi
+Gaussian memiliki puncak error sekitar 0.005
+Uniform memiliki puncak error yang sedikit lebih tinggi (>0.005)
+
+b. Pertengahan Simulasi (t = 20-60):
+Error mulai stabil
+Gaussian menunjukkan fluktuasi yang lebih halus
+Uniform menunjukkan beberapa lonjakan error yang lebih tinggi
+
+c. Akhir Simulasi (t > 60):
+Kedua distribusi mencapai error yang relatif stabil
+Gaussian menunjukkan error yang lebih rendah dan konsisten
+Uniform masih menunjukkan beberapa fluktuasi kecil
+
+3. Implikasi untuk Model:
+Distribusi Gaussian menghasilkan error yang lebih stabil dan terprediksi
+Distribusi Uniform cenderung menghasilkan fluktuasi error yang lebih besar
+Kedua model mencapai kestabilan setelah t > 60, menunjukkan konvergensi yang baik
+
+4. Kesimpulan dari Error Analysis:
+a. Distribusi Gaussian lebih unggul dalam hal:
+Stabilitas error yang lebih baik
+Fluktuasi error yang lebih kecil
+Konvergensi yang lebih cepat
+Hal ini mendukung kesimpulan sebelumnya bahwa distribusi Gaussian lebih sesuai untuk pemodelan sistem konservasi hutan dan satwa liar
+Error fitting ini memperkuat argumen bahwa distribusi Gaussian memberikan hasil yang lebih reliable dalam konteks pemodelan konservasi, karena menghasilkan error yang lebih stabil dan terprediksi sepanjang waktu simulasi.
