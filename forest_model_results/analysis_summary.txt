@@ -1,0 +1,35 @@
+Forest Conservation Model Analysis Summary
+==================================================
+
+Final Values Comparison:
+Method                     Gaussian       Uniform
+Variable                                         
+Economic Measures      1.090089e-01  2.364453e+00
+Forest Biomass        -6.006787e-09 -1.525306e-09
+Human Activities       2.293570e+00  1.127505e+01
+Human Population       1.000000e+00  1.000000e+00
+Population Pressure    1.858606e-01  8.713959e-01
+Technological Efforts  3.328451e-01  2.400412e+00
+Wildlife              -5.826854e-08 -4.113275e-09
+
+Stability Comparison:
+Method                 Gaussian   Uniform
+Variable                                 
+Economic Measures      0.005599  0.494147
+Forest Biomass         0.078376  0.099030
+Human Activities       0.646886  3.159836
+Human Population       0.100836  0.079752
+Population Pressure    0.013858  0.086800
+Technological Efforts  0.066687  0.486199
+Wildlife               0.075413  0.092916
+
+Convergence Rates:
+Method                     Gaussian       Uniform
+Variable                                         
+Economic Measures      8.351062e-07  9.899639e-07
+Forest Biomass        -8.365484e-11 -3.755122e-11
+Human Activities       1.448930e-02  2.937210e-02
+Human Population       2.686182e-10 -1.383800e-15
+Population Pressure   -2.700625e-09 -1.075401e-07
+Technological Efforts  6.725044e-04  1.110367e-06
+Wildlife              -2.547889e-13 -9.656843e-11
